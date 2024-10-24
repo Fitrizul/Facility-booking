@@ -1,0 +1,99 @@
+<div class="container my-5">
+  <div *ngIf="editSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    You have successfully update the selected sport facility!
+    <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+  </div>
+  <h1 class="text-center mb-5">Manage Facility</h1>
+  <div class="row justify-content-center mb-4 mt-5">
+    <div class="col-md-12 col-lg-5">
+      <div class="mb-4">
+        <div>
+          <img *ngIf="imagePath" [src]="imagePath" alt="Facility Image" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-5 ms-lg-5"> 
+      <form (ngSubmit)="onSubmit()" [formGroup]="facilityForm">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input
+            class="form-control"
+            [formControlName]="'name'"
+            [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.name.errors }"
+          />
+          <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.name.errors">
+            <span *ngIf="facilityForm.controls.name.errors.required">Name is required.</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Start Time</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="startTime"
+              [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.startTime.errors }"
+            />
+            <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.startTime.errors">
+              <span *ngIf="facilityForm.controls.startTime.errors.required">Start time is required.</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">End Time</label>
+            <input
+              type="time"
+              class="form-control"
+              formControlName="endTime"
+              [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.endTime.errors }"
+            />
+            <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.endTime.errors">
+              <span *ngIf="facilityForm.controls.endTime.errors.required">End time is required.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Max Capacity</label>
+          <input
+            class="form-control"
+            formControlName="maxCapacity"
+            [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.maxCapacity.errors }"
+          />
+          <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.maxCapacity.errors">
+            <span *ngIf="facilityForm.controls.maxCapacity.errors.required">Max capacity is required.</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Features</label>
+          <input
+            class="form-control"
+            formControlName="features"
+            [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.features.errors }"
+          />
+          <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.features.errors">
+            <span *ngIf="facilityForm.controls.features.errors.required">Features are required.</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Price per Hour</label>
+          <input
+            class="form-control"
+            formControlName="pricePerHour"
+            [ngClass]="{ 'is-invalid': submitted && facilityForm.controls.pricePerHour.errors }"
+          />
+          <div class="form-text text-danger" *ngIf="submitted && facilityForm.controls.pricePerHour.errors">
+            <span *ngIf="facilityForm.controls.pricePerHour.errors.required">Price per hour is required.</span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+          <button type="submit" class="btn btn-md rounded-pill btn-primary px-4">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

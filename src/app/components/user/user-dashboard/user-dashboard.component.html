@@ -1,0 +1,22 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-end mb-4">
+      <button (click)="onLogout()" class="btn btn-md rounded-pill btn-danger px-4">Log Out</button>
+    </div>
+    <h1 class="text-center mb-5">Sport Facilities</h1>
+    <div class="row g-4">
+      <div *ngFor="let facility of facilities" class="col-xl-4 col-lg-6 col-md-12">
+        <div class="card h-100 shadow-sm">
+          <img [src]="facility.imagePath" alt="{{ facility.name }} Image" class="card-img-top img-fluid border border-white" style="height: 225px; object-fit: cover;" focusable="false">  
+          <div class="card-body">
+            <h5 class="card-title text-danger" style="font-weight: 600; margin-bottom: 20px;">{{ facility.name }}</h5>
+            <p class="card-text mb-1" style="font-size: 1rem;"><strong>Opening Hours:</strong> {{ formatTime(facility.startTime) }} - {{ formatTime(facility.endTime) }} </p>
+            <p class="card-text mb-3" style="font-size: 1rem;"><strong>Price Per Hour:</strong> RM{{ facility.pricePerHour }}</p>
+            <div class="d-flex justify-content-start align-items-center">
+              <a [routerLink]="['/userFacilitiesDetails', facility.id]" routerLinkActive="active" class="btn btn-md rounded-pill btn-success px-4" style="width: 125px;">Details</a>
+              <a [routerLink]="['/bookingForm', facility.id]" routerLinkActive="active" class="btn btn-md rounded-pill btn-primary px-4 ms-3" style="width: 125px;">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div> 
+</div>

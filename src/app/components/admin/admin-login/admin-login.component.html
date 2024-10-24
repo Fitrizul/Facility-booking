@@ -1,0 +1,32 @@
+<div class="container my-4 mx-5">
+  <div class="row g-0">
+    <div class="col-lg-5">
+      <img [src]="adminLoginImage" alt="User Login Image">  
+    </div>
+    <div class="col-lg-7 px-5 pt-5 my-5" >
+      <h1 class="font-weight-bold py-3">Admin Login</h1>
+      <h4 class="mb-5">Sign into your account</h4>
+      <p *ngIf="loginError" class="error">{{ loginError }}</p>
+      <form (ngSubmit)="onLogin()">
+        <div class="form-row">
+          <div class="col-lg-7"> 
+            <input type="text" name="uname" [(ngModel)]="username" placeholder="User Name" class="form-control mt-4 my-5 p-4" required />
+          </div>	
+        </div>
+        <div class="form-row">
+          <div class="col-lg-7">
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Password" class="form-control mt-4 my-5 p-4" required />
+          </div>	
+        </div>
+        <div class="form-row">
+          <div class="col-lg-7">
+            <button type="submit" class="btn1 mt-3 mb-5">Login</button>
+          </div>	
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  

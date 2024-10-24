@@ -1,0 +1,27 @@
+<div class="container my-5">
+    <h1 class="text-center mb-5">Facility Details</h1>
+    <div *ngIf="!loading && facility" class="row mt-5">
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="img-container">
+          <img [src]="facility.imagePath" alt="{{ facility.name }} Image" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 style="color: #191970;" class="mb-4">{{ facility.name }}</h3>
+        <div class="mb-3">
+          <i class="bi bi-clock-fill"></i> <strong></strong> {{ formatTime(facility.startTime) }} - {{ formatTime(facility.endTime) }}
+        </div>
+        <div class="mb-3">
+          <i class="bi bi-people-fill"></i> <strong></strong> {{ facility.maxCapacity }}
+        </div>
+        <div class="mb-3">
+          <i class="bi bi-lightbulb-fill"></i> <strong></strong> {{ facility.features }}
+        </div>
+        <div class="mb-3">
+          <i class="bi bi-cash"></i> <strong></strong> RM {{ facility.pricePerHour }}
+        </div>
+        <a [routerLink]="['/bookingForm', facility.id]" routerLinkActive="active" class="btn rounded-pill btn-primary mt-3 px-4 py-2" id="submit">Book Court</a>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,51 @@
+<div class="container my-5">
+
+    <div *ngIf="bookingSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+        You have successfully booked the court!
+        <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+    </div>
+
+    <h1 class="text-center mb-5"> {{ facility?.name }} Booking Form</h1>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm">
+  
+          <div class="mb-3">
+            <label for="bookingDate" class="form-label">Date</label>
+            <input id="bookingDate" class="form-control" formControlName="date" type="date">
+            <div class="form-text text-danger" *ngIf="submitted && bookingForm.controls.date.errors">
+              <span *ngIf="bookingForm.controls.date.errors.required">Date is required.</span>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="startTime" class="form-label">Start Time</label>
+            <select id="startTime" class="form-control" formControlName="startTime">
+              <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+            </select>
+            <div class="form-text text-danger" *ngIf="submitted && bookingForm.controls.startTime.errors">
+              <span *ngIf="bookingForm.controls.startTime.errors.required">Start time is required.</span>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="duration" class="form-label">Duration (hours)</label>
+            <input id="duration" class="form-control" formControlName="duration" type="number" step="0.5">
+            <div class="form-text text-danger" *ngIf="submitted && bookingForm.controls.duration.errors">
+              <span *ngIf="bookingForm.controls.duration.errors.required">Duration is required.</span>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="comments" class="form-label">Remark</label>
+            <textarea id="comments" class="form-control" formControlName="comments" rows="3"></textarea>
+          </div>
+  
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-md rounded-pill btn-primary px-4 mt-3">Submit Booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .col-lg-5 {
+    max-width: 75%; 
+  }
+  
+  .d-flex {
+    display: flex;
+  }
+  
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    .img-fluid {
+        height: 420px;
+      }
+  }
+  
